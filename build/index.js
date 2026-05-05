@@ -426,7 +426,8 @@ print(json.dumps(results))
             };
         }
         // Parse the package information
-        const packageInfo = JSON.parse(stdout.trim());
+        const stdoutStr = typeof stdout === 'string' ? stdout : (stdout ? String(stdout) : '');
+        const packageInfo = JSON.parse(stdoutStr.trim());
         // Add summary information to make it easier to use
         const allInstalled = Object.values(packageInfo).every((info) => info.installed);
         const notInstalled = Object.entries(packageInfo)
