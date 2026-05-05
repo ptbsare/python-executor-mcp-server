@@ -25,6 +25,33 @@ The MCP Code Executor is an MCP server that allows LLMs to execute Python code w
 
 ## Setup
 
+### Option 1: Using npx (Quick Start)
+
+You can run the server directly from the git repository using npx — no clone or install needed:
+
+```json
+{
+  "mcpServers": {
+    "mcp-code-executor": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "git+https://github.com/ptbsare/python-executor-mcp-server.git"
+      ],
+      "env": {
+        "CODE_STORAGE_DIR": "/path/to/code/storage",
+        "ENV_TYPE": "conda",
+        "CONDA_ENV_NAME": "your-conda-env"
+      }
+    }
+  }
+}
+```
+
+> **Note:** The first run will be slower as npx clones and installs the package. Subsequent runs use the npx cache.
+
+### Option 2: Clone & Build Locally
+
 1. Clone this repository:
 
 ```bash
@@ -53,7 +80,28 @@ npm run build
 
 To configure the MCP Code Executor server, add the following to your MCP servers configuration file:
 
-### Using Node.js
+### Using npx (Recommended — No Install Required)
+
+```json
+{
+  "mcpServers": {
+    "mcp-code-executor": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "git+https://github.com/ptbsare/python-executor-mcp-server.git"
+      ],
+      "env": {
+        "CODE_STORAGE_DIR": "/path/to/code/storage",
+        "ENV_TYPE": "conda",
+        "CONDA_ENV_NAME": "your-conda-env"
+      }
+    }
+  }
+}
+```
+
+### Using Node.js (Local Build)
 
 ```json
 {
